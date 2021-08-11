@@ -38,12 +38,12 @@ public class MarsAdventureGame {
        System.out.println("Are you excited? type Y or N");
        String excited = scanner.nextLine().toUpperCase();
        while(true) {
-           if (excited.equalsIgnoreCase("Y")) {
+           if (excited.trim().equalsIgnoreCase("Y")) {
                System.out.println("I knew you'd say that. It's so cool that you're going to Mars! \n"
                        + "It's time to pack for your trip to Mars. \n"
                );
                break;
-           } else if (excited.equalsIgnoreCase("N")) {
+           } else if (excited.trim().equalsIgnoreCase("N")) {
                System.out.println("Too bad! It would have been a worldly experience");
                System.exit(0);
                break;
@@ -64,6 +64,7 @@ public class MarsAdventureGame {
 
                if (numberOfSuitcases <= 2 && numberOfSuitcases > 0) {
                    System.out.println("That's perfect. You are allowed to bring " + numberOfSuitcases + " suitcases");
+                   scanner.nextLine();
                    break;
                } else {
                    System.out.println("That's way too many. You'll have to pack more lightly \n"
@@ -80,11 +81,11 @@ public class MarsAdventureGame {
    public void animalDesc() {
        String animal;
        System.out.println("You're allowed to bring one companion animal with you");
-
+       System.out.println("What kind of companion animal would you like to bring?");
        while (true) {
            animal = scanner.nextLine();
-           if (!animal.trim().isEmpty()) {
-               System.out.println("What kind of companion animal would you like to bring?");
+           animal =animal.trim();
+           if (!animal.isEmpty()) {
                break;
            } else {
                System.out.println("Warning! you need to enter your animal");
@@ -94,8 +95,9 @@ public class MarsAdventureGame {
        System.out.println("What is your companion's name?");
        while (true) {
            animalName = scanner.nextLine();
+           animalName=animalName.trim();
 
-           if (!animalName.trim().isEmpty()) {
+           if (!animalName.isEmpty()) {
                System.out.println("Cool, so you're bringing " + animalName + " the " + animal);
                break;
            } else {
@@ -104,6 +106,7 @@ public class MarsAdventureGame {
 
        }
    }
+
    public void chooseSpaceship(){
        System.out.println("NASA has a interior design team offering to outfit your space ship.\n" +
                "You have a couple of options for the interior decor of your ship.");
@@ -111,7 +114,7 @@ public class MarsAdventureGame {
                " A  Sleek, modern minimalism\n" +
                " B  Retro/vintage space age\n" +
                " C  SF Hippie chic\n" +
-               "Which decor would you like? Choose zA, B, or C.");
+               "Which decor would you like? Choose A, B, or C.");
 
        boolean loop=true;
        while (loop) {
